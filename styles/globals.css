@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .hover-bg {
+    @apply hover:bg-gray-200 rounded-full p-6;
+  }
+}
