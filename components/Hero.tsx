@@ -1,5 +1,11 @@
+import VerseBackground from "./verse/VerseBackground";
+
 const Hero: React.FC = () => {
-  return <div>Hero</div>;
+  return (
+    <div>
+      <VerseBackground />
+    </div>
+  );
 };
 
 export default Hero;

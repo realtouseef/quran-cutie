@@ -6,7 +6,7 @@ const Navbar: React.FC = () => {
   const [toggleTheme, setToggleTheme] = useState<boolean>(false);
   return (
     <nav className="h-10 my-6">
-      <div className="flex items-center justify-between text-xl">
+      <div className="flex items-center justify-between text-xl font-bold">
         <h1>quran-cutie</h1>
         <ul className="flex items-center justify-center">
           <li className="mr-5 hover-bg">?</li>
