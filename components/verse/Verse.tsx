@@ -1,30 +1,51 @@
 import { useState, useEffect } from "react";
+const randomNumber = Math.floor(Math.random() * 6236);
 
-const Verse = () => {
-  const [storeVerse, setStoreVerse] = useState<string>("");
+interface VerseProps {
+  number: number;
+  text: string;
+  surah: SurahProp;
+}
 
-  const randomNumber = Math.floor(Math.random() * 6236);
+interface SurahProp {
+  number: number;
+  name: string;
+  englishName: string;
+  englishNameTranslation: string;
+}
+
+const Verse: React.FC = () => {
+  const [storeVerse, setStoreVerse] = useState<VerseProps>();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
+
+  async function getVerse() {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_VERSE_URL}/${randomNumber}`
+    );
+    const fetchedVerse = await response.json();
+    setStoreVerse(fetchedVerse.data);
+    setIsLoading(false);
+  }
 
   useEffect(() => {
-    async function getVerse() {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_VERSE_URL}/${randomNumber}`
-      );
-      const verse = await res.json();
-      // console.log("verse.data", verse.data.text);
-      //TODO: set this to "data" only
-      //TODO: fix the type err
-      setStoreVerse(verse.data.text);
-    }
     getVerse();
   }, []);
 
   return (
     // TODO: change bg-color
-    <div className="min-h-[250px] min-w-[200px] max-w-2xl rounded-md bg-white/90 py-10 px-8 text-right text-xl drop-shadow-2xl">
-      {/* {storeVerse} */}
-      hello
-    </div>
+    <main className="min-h-[250px] min-w-[200px] rounded-md bg-white/90 py-10 px-8 text-center  drop-shadow-2xl">
+      {isLoading && <p>Loading, please wait...</p>}
+      <p>
+        {storeVerse?.surah.name} — {storeVerse?.surah.englishName}
+      </p>
+      <p>{storeVerse?.surah.englishNameTranslation}</p>
+      <article className="text-right text-2xl leading-loose">
+        {storeVerse?.text}
+      </article>
+      <p>
+        {storeVerse?.surah.number} : {storeVerse?.number}
+      </p>
+    </main>
   );
 };
 

@@ -9,7 +9,7 @@ const VerseBackground: React.FC = () => {
   return (
     <>
       {/* TODO: fix the width and height  */}
-      <main className="gradient-bg content-shadow max=w-[820px] mx-auto max-h-[443px] rounded-md p-10">
+      <main className="gradient-bg content-shadow mx-auto max-h-[443px] max-w-[820px] rounded-md p-10">
         <article>
           <Verse />
         </article>
@@ -17,7 +17,7 @@ const VerseBackground: React.FC = () => {
 
       {/* FLOATING BAR  */}
 
-      <article className="floating-bar fixed bottom-[10%] left-0 right-0 z-20 mx-auto max-w-sm rounded-lg p-1 text-gray-500">
+      <article className="floating-bar float-shadow fixed bottom-[10%] left-0 right-0 z-20 mx-auto max-w-sm rounded-lg p-1 text-gray-500">
         <div className="flex items-center justify-between divide-x divide-gray-300 text-[12px]">
           <div className="flex items-center justify-center">
             <div className="floating-btn-center floatHover cursor-pointer">

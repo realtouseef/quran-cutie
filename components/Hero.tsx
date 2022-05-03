@@ -1,6 +1,5 @@
 import VerseBackground from "./verse/VerseBackground";
-
-const Hero: React.FC = () => {
+const Hero = () => {
   return (
     <div>
       <VerseBackground />

@@ -1,10 +1,16 @@
 @tailwind base;
 @tailwind components;
+
+@font-face {
+  font-family: "Uthmanic";
+  src: local("Uthmanic"), url(../public/font/uthmanic.woff2) format("woff2");
+}
+
 @tailwind utilities;
 
 @layer components {
   .hover-bg {
-    @apply rounded-full p-6 hover:bg-gray-200;
+    @apply rounded-full p-3 hover:bg-gray-400 hover:text-white;
   }
 
   .floating-btn-center {
@@ -26,6 +32,9 @@
 
 body {
   background-color: hsl(220, 24%, 86%);
+  font-family: "Uthmanic", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 .gradient-bg {
   background-image: linear-gradient(
@@ -50,6 +59,9 @@ body {
 
 .floating-bar {
   background-image: linear-gradient(-20deg, #f7eef5, #ebf1fa 80%);
+}
+
+.float-shadow {
   box-shadow: rgba(50, 50, 93, 0.2) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.25) 0px 25px 50px -20px;
 }
