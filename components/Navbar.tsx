@@ -7,12 +7,12 @@ const Navbar: React.FC = () => {
   const [toggleTheme, setToggleTheme] = useState<boolean>(false);
   return (
     <nav className="my-6 h-10">
-      <div className="flex items-center justify-between text-xl font-bold">
+      <div className="flex items-center justify-between text-xl font-bold text-gray-500">
         <h1>quran-cutie</h1>
-        <ul className="flex items-center justify-center">
-          <li className="hover-bg mr-5">
+        <div className="flex items-center justify-center">
+          <button className="hover-bg mr-5">
             <Question />
-          </li>
+          </button>
           <button
             className="hover-bg"
             onClick={() => {
@@ -21,7 +21,7 @@ const Navbar: React.FC = () => {
           >
             {toggleTheme ? <Sun width="18" /> : <Moon width="20" />}
           </button>
-        </ul>
+        </div>
       </div>
     </nav>
   );

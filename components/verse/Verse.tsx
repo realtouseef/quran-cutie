@@ -3,9 +3,13 @@ import { useState, useEffect } from "react";
 const Verse = () => {
   const [storeVerse, setStoreVerse] = useState<string>("");
 
+  const randomNumber = Math.floor(Math.random() * 6236);
+
   useEffect(() => {
     async function getVerse() {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_VERSE_URL}/13`);
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_VERSE_URL}/${randomNumber}`
+      );
       const verse = await res.json();
       // console.log("verse.data", verse.data.text);
       //TODO: set this to "data" only
