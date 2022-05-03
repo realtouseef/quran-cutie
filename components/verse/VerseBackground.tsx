@@ -4,6 +4,8 @@ import Copy from "../../public/icons/copy.svg";
 import Next from "../../public/icons/next.svg";
 
 const VerseBackground: React.FC = () => {
+  const width = 20;
+
   return (
     <>
       {/* TODO: fix the width and height  */}
@@ -15,18 +17,19 @@ const VerseBackground: React.FC = () => {
 
       {/* FLOATING BAR  */}
 
-      <article className="floating-bar fixed bottom-16 left-0 right-0 z-20 mx-auto max-w-xs bg-pink-100">
-        <div className="flex items-center justify-between space-x-5 rounded-xl py-1 px-2 text-xl">
-          <button>
-            <Next />
-            <span>Next Verse</span>
+      <article className="floating-bar fixed bottom-[10%] left-0 right-0 z-20 mx-auto  max-w-xs rounded-lg p-1 text-gray-500">
+        <div className="flex items-center justify-between space-x-5 text-[12px]">
+          <button className="floating-btn-center floatHover">
+            <Next width={width} />
+            <span className="mt-2 tracking-wide">Next Verse</span>
           </button>
-          <button>
-            <Copy /> <span>Copy</span>
+          <button className="floating-btn-center floatHover">
+            <Copy width={width} />{" "}
+            <span className="mt-2 tracking-wide">Copy</span>
           </button>
-          <button>
-            <Download />
-            <span>Download</span>
+          <button className="floating-btn-center floatHover floatBtnDownload">
+            <Download width={width} />
+            <span className="mt-2 tracking-wide">Download</span>
           </button>
         </div>
       </article>

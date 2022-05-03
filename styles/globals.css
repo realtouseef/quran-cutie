@@ -6,6 +6,18 @@
   .hover-bg {
     @apply rounded-full p-6 hover:bg-gray-200;
   }
+
+  .floating-btn-center {
+    @apply flex flex-col items-center;
+  }
+
+  .floatHover {
+    @apply w-24 rounded-md py-1 hover:bg-gray-300;
+  }
+
+  .floatBtnDownload {
+    @apply bg-blue-400 text-white hover:bg-blue-500;
+  }
 }
 
 body {
@@ -34,7 +46,6 @@ body {
 
 .floating-bar {
   background-image: linear-gradient(-20deg, #f7eef5, #ebf1fa 80%);
-
   box-shadow: rgba(50, 50, 93, 0.2) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.25) 0px 25px 50px -20px;
 }
