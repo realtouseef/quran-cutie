@@ -2,9 +2,11 @@ import Verse from "./Verse";
 import Download from "../../public/icons/download.svg";
 import Copy from "../../public/icons/copy.svg";
 import Next from "../../public/icons/next.svg";
+import useFetch from "../../hooks/useFetch";
 
 const VerseBackground: React.FC = () => {
   const width = 20;
+  const {getVerse, storeVerse} = useFetch();
 
   return (
     <>
@@ -24,7 +26,8 @@ const VerseBackground: React.FC = () => {
               <button className="gradient-bg relative h-6 w-6 rounded-full border-2 border-white"></button>
               <span className="floatMarginTrack">Color</span>
             </div>
-            <button className="floating-btn-center floatHover">
+            <button className="floating-btn-center floatHover"
+            onClick={()=> getVerse()}>
               <Next width={width} />
               <span className="floatMarginTrack">Next Verse</span>
             </button>

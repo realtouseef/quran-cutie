@@ -1,36 +1,8 @@
-import { useState, useEffect } from "react";
-const randomNumber = Math.floor(Math.random() * 6236);
-
-interface VerseProps {
-  text: string;
-  numberInSurah: number;
-  surah: SurahProp;
-}
-
-interface SurahProp {
-  number: number;
-  name: string;
-  englishName: string;
-  englishNameTranslation: string;
-  revelationType: string;
-}
+// import {VerseProps } from '../../utils/types'
+import useFetch from '../../hooks/useFetch'
 
 const Verse: React.FC = () => {
-  const [storeVerse, setStoreVerse] = useState<VerseProps>();
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-
-  async function getVerse() {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_VERSE_URL}/${randomNumber}`
-    );
-    const fetchedVerse = await response.json();
-    setStoreVerse(fetchedVerse.data);
-    setIsLoading(false);
-  }
-
-  useEffect(() => {
-    getVerse();
-  }, []);
+  const {storeVerse, isLoading} = useFetch()
 
   return (
     // TODO: change bg-color
