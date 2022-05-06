@@ -13,6 +13,14 @@
     @apply rounded-full p-3 hover:bg-gray-400 hover:text-white;
   }
 
+  .resizeCircle {
+    @apply w-2 h-2 bg-gray-300 hover:bg-gray-100 hover:scale-150 transition-all duration-200  rounded-full absolute ;
+  }
+
+  .circle {
+    @apply h-8 w-8 rounded-full border-2 border-white cursor-pointer;
+  }
+
   .floating-btn-center {
     @apply flex flex-col items-center;
   }
@@ -26,7 +34,7 @@
   }
 
   .floatMarginTrack {
-    @apply mt-2 tracking-wide;
+    @apply mt-2 tracking-wide text-[11px];
   }
 }
 

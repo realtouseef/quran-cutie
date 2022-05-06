@@ -1,7 +1,7 @@
 const Footer: React.FC = () => {
   return (
     <footer>
-      <div className="text-sm text-center py-6 text-gray-500">
+      <div className="text-xs md:text-sm text-center py-6 text-gray-500">
         Connect with me on Linkedin:{" "}
         <a
           href="https://www.linkedin.com/in/touseefcodes"
