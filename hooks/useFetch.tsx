@@ -14,7 +14,6 @@ const useFetch = () => {
     const fetchedVerse = await response.json();
     setStoreVerse(fetchedVerse.data);
     setIsLoading(false);
-    console.log("clicked from useFetch");
   }
 
   useEffect(() => {

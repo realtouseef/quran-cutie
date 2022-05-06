@@ -4,11 +4,12 @@ import Download from "../../public/icons/download.svg";
 import Copy from "../../public/icons/copy.svg";
 import Next from "../../public/icons/next.svg";
 // import useFetch from "../../hooks/useFetch";
+import useWindowResize from '../../hooks/useWindowResize';
 
 const VerseBackground: React.FC = () => {
   const [showColors, setShowColors] = useState<boolean>(false)
   const width = 20;
-
+  const windowSize = useWindowResize();
   // const {getVerse, storeVerse} = useFetch();
 
   // use window.outerHeight and outerWidth to resize the window 
