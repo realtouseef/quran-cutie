@@ -1,19 +1,15 @@
 // import {VerseProps } from '../../utils/types'
-import useFetch from '../../hooks/useFetch'
+import useFetch from "../../hooks/useFetch";
 
 const Verse: React.FC = () => {
-  const {storeVerse, isLoading} = useFetch()
+  const { storeVerse, isLoading } = useFetch();
 
   return (
     // TODO: change bg-color
-    <main className="flex min-h-[250px] min-w-[200px] flex-col justify-between rounded-md bg-white/90 py-8 px-8 text-center text-sm text-gray-500  drop-shadow-2xl">
+    <main className="verse-bg mx-auto flex h-[350px] min-h-[250px] min-w-[200px] max-w-[650px] flex-col justify-between rounded-md py-8 px-8 text-center text-sm text-gray-500 drop-shadow-2xl">
       {isLoading && <p>Loading, please wait...</p>}
       <div>
-        <p>
-          <span className="text-2xl">{storeVerse?.surah.name}</span> —{" "}
-          {storeVerse?.surah.englishName}
-        </p>
-        <p className="mt-2">{storeVerse?.surah.englishNameTranslation}</p>
+        <p className="text-2xl">{storeVerse?.surah.name}</p>
       </div>
       <article className="mt-8 mb-10 text-right  text-2xl leading-loose text-black">
         {storeVerse?.text}

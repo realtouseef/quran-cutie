@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import {VerseProps } from '../utils/types'
+import { VerseProps } from "../utils/types";
 
 const randomNumber = Math.floor(Math.random() * 6236);
 
@@ -14,13 +14,13 @@ const useFetch = () => {
     const fetchedVerse = await response.json();
     setStoreVerse(fetchedVerse.data);
     setIsLoading(false);
-  }
+  };
 
   useEffect(() => {
     getVerse();
   }, []);
 
-  return {storeVerse, isLoading, getVerse};
-}
+  return { storeVerse, isLoading, getVerse };
+};
 
-export default useFetch
+export default useFetch;
