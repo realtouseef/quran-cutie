@@ -6,7 +6,7 @@ const Verse: React.FC = () => {
 
   return (
     // TODO: change bg-color
-    <main className="verse-bg mx-auto flex h-[350px] min-h-[250px] min-w-[200px] max-w-[650px] flex-col justify-between rounded-md py-8 px-8 text-center text-sm text-gray-500 drop-shadow-2xl">
+    <main className="verse-bg mx-auto flex min-h-[250px] min-w-[200px] max-w-[650px] flex-col justify-between rounded-md py-8 px-8 text-center text-sm text-gray-500 drop-shadow-2xl">
       {isLoading && <p>Loading, please wait...</p>}
       <div>
         <p className="text-2xl">{storeVerse?.surah.name}</p>

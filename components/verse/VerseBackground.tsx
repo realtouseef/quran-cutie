@@ -92,15 +92,13 @@ export default VerseBackground;
 const gradientPallete = [
   {
     id: 1,
-    color: "",
+    color:
+      "backgroundImage: linear-gradient(160deg, rgb(204, 251, 252), rgb(197, 234, 254), rgb(189, 211, 255))",
   },
   {
     id: 2,
-    color: "",
-  },
-  {
-    id: 3,
-    color: "",
+    color:
+      "backgroundImage: linear-gradient(345deg, rgb(211, 89, 255), rgb(228, 99, 255), rgb(255, 123, 247), rgb(255, 154, 218), rgb(255, 185, 208), rgb(255, 209, 214), rgb(255, 219, 219))",
   },
 ];
 
@@ -109,12 +107,11 @@ export function Colors() {
     // map through the gradientColors
     <main className="absolute right-0 left-0 bottom-20 max-w-max rounded-md bg-gray-200 py-2 px-3">
       <div className="grid grid-cols-3 gap-4">
-        <div className="circle bg-purple-500"></div>
-        <div className="circle bg-pink-500"></div>
-        <div className="circle bg-fuchsia-500"></div>
-        <div className="circle bg-violet-500"></div>
-        <div className="circle bg-yellow-500"></div>
-        <div className="circle bg-amber-500"></div>
+        {gradientPallete.map((grad) => {
+          return (
+            <div key={grad.id} className="circle" style={grad.color}></div>
+          );
+        })}
       </div>
     </main>
   );
