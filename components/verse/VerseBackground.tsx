@@ -1,15 +1,15 @@
-import {useState} from 'react'
-// import Verse from "./Verse";
+import { useState } from 'react'
+import Verse from "./Verse";
 import Download from "../../public/icons/download.svg";
 import Copy from "../../public/icons/copy.svg";
 import Next from "../../public/icons/next.svg";
-// import useFetch from "../../hooks/useFetch";
-import useWindowResize from '../../hooks/useWindowResize';
+import useFetch from "../../hooks/useFetch";
+// import useWindowResize from '../../hooks/useWindowResize';
 
 const VerseBackground: React.FC = () => {
   const [showColors, setShowColors] = useState<boolean>(false)
   const width = 20;
-  const windowSize = useWindowResize();
+  // const windowSize = useWindowResize();
   // const {getVerse, storeVerse} = useFetch();
 
   // use window.outerHeight and outerWidth to resize the window 
@@ -18,12 +18,12 @@ const VerseBackground: React.FC = () => {
   return (
     <>
       {/* TODO: fix the width and height  */}
-      <main className='mt-40'>
-        <article className={`relative gradient-bg content-shadow mx-auto h-44 w-44 max-h-[443px] max-w-[700px] rounded-md p-10`}
+      <main className='mt-10'>
+        <article className={`relative gradient-bg content-shadow mx-auto max-h-[443px] max-w-[700px] rounded-md p-10`}
         >
-          <button className='resizeCircle cursor-w-resize top-1/2 right-[-5px]'></button>
-              <button className='resizeCircle cursor-s-resize right-1/2 bottom-[-5px]'></button>
-          {/* <Verse /> */}
+          {/* <button className='resizeCircle cursor-w-resize top-1/2 right-[-5px]'></button>
+          <button className='resizeCircle cursor-s-resize right-1/2 bottom-[-5px]'></button> */}
+          <Verse />
           
         </article>
       </main>
@@ -33,11 +33,10 @@ const VerseBackground: React.FC = () => {
       <article className="floating-bar float-shadow fixed bottom-[10%] left-0 right-0 z-20 mx-auto max-w-sm rounded-lg p-1 text-gray-500">
         <div className="flex items-center justify-between divide-x divide-gray-300 text-[12px]">
           <div className="flex items-center justify-center">
-            <div className="relativefloating-btn-center floatHover cursor-pointer">
-              <button className="floating-btn-center floatHover"
-              onClick={()=> setShowColors(!showColors)}
+            <div className="relative floating-btn-center floatHover cursor-pointer">
+              <button onClick={()=> setShowColors(!showColors)}
               >
-              <div className="gradient-bg relative h-6 w-6 rounded-full"></div>
+              <div className="gradient-bg relative h-6 w-6 rounded-full border-2 border-white mb-1"></div>
               <span className="floatMarginTrack">Color</span>
               </button>
             </div>
