@@ -1,26 +1,34 @@
 import { useState, useEffect } from "react";
-import {VerseProps } from '../utils/types'
-
-const randomNumber = Math.floor(Math.random() * 6236);
+import { VerseProps } from "../utils/types";
+import axios from "axios";
 
 const useFetch = () => {
-  const [storeVerse, setStoreVerse] = useState<VerseProps>();
-  const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [data, setData] = useState<VerseProps>();
+  const [isLoading, setIsLoading] = useState<boolean | null>(null);
+  const [error, setError] = useState<boolean | null>(null);
 
-  const getVerse = async () => {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_VERSE_URL}/${randomNumber}`
-    );
-    const fetchedVerse = await response.json();
-    setStoreVerse(fetchedVerse.data);
-    setIsLoading(false);
-  }
+  const randomNumber = Math.floor(Math.random() * 6236) + 1;
+  const url = `${process.env.NEXT_PUBLIC_VERSE_URL}/${randomNumber}`;
 
   useEffect(() => {
-    getVerse();
+    setIsLoading(true);
+    axios
+      .get(url)
+      .then((response) => setData(response.data))
+      .catch((err) => setError(err))
+      .finally(() => setIsLoading(false));
   }, []);
 
-  return {storeVerse, isLoading, getVerse};
-}
+  const refetch = () => {
+    setIsLoading(true);
+    axios
+      .get(url)
+      .then((response) => setData(response.data))
+      .catch((err) => setError(err))
+      .finally(() => setIsLoading(false));
+  };
 
-export default useFetch
+  return { data, isLoading, error, refetch };
+};
+
+export default useFetch;

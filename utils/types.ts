@@ -1,7 +1,9 @@
 export interface VerseProps {
-  text: string;
-  numberInSurah: number;
-  surah: SurahProp;
+  data: {
+    text: string;
+    numberInSurah: number;
+    surah: SurahProp;
+  };
 }
 
 interface SurahProp {
