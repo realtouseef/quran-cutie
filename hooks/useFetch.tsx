@@ -3,7 +3,7 @@ import { VerseProps } from "../utils/types";
 import axios from "axios";
 
 const useFetch = () => {
-  const [data, setData] = useState<VerseProps>();
+  const [data, setData] = useState<VerseProps | null>(null);
   const [isLoading, setIsLoading] = useState<boolean | null>(null);
   const [error, setError] = useState<boolean | null>(null);
 

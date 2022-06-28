@@ -68,6 +68,7 @@ const VerseBackground: React.FunctionComponent = () => {
               {verse?.data.surah.number}:{verse?.data.numberInSurah}
             </p>
             <p>Revelation Type: {verse?.data.surah.revelationType}</p>
+            <button onClick={refetch}>Change</button>
           </main>
         </article>
       </main>

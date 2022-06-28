@@ -14,11 +14,11 @@
   }
 
   .resizeCircle {
-    @apply w-2 h-2 bg-gray-300 hover:bg-gray-100 hover:scale-150 transition-all duration-200  rounded-full absolute ;
+    @apply absolute h-2 w-2 rounded-full bg-gray-300 transition-all duration-200  hover:scale-150 hover:bg-gray-100;
   }
 
   .circle {
-    @apply h-8 w-8 rounded-full border-2 border-white cursor-pointer;
+    @apply h-8 w-8 cursor-pointer rounded-full border-2 border-white;
   }
 
   .floating-btn-center {
@@ -34,7 +34,7 @@
   }
 
   .floatMarginTrack {
-    @apply mt-2 tracking-wide text-[11px];
+    @apply mt-2 text-[11px] tracking-wide;
   }
 }
 
@@ -57,6 +57,14 @@ body {
     rgb(255, 200, 199),
     rgb(255, 216, 199),
     rgb(255, 221, 199)
+  );
+}
+
+.verse-bg {
+  background-image: linear-gradient(
+    -50deg,
+    rgba(255, 255, 255, 0.4),
+    rgba(255, 255, 255, 0.85) 80%
   );
 }
 

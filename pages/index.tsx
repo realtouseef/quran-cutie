@@ -8,7 +8,9 @@ const Home: NextPage = ({ ayat }) => {
   return (
     <Layout>
       <Head>
-        <title>quran-cutie🤩</title>
+        <title>
+          quran-cutie 🤩 | Create beautiful images of verses from Quran
+        </title>
         <meta
           name="description"
           content="Create beautiful images of verses from Quran"
