@@ -3,32 +3,43 @@ import { VerseProps } from "../utils/types";
 import axios from "axios";
 
 const useFetch = () => {
-  const [data, setData] = useState<VerseProps | null>(null);
+  const [surahData, setSurahData] = useState<VerseProps | string[]>([""]);
+  const [arabicData, setArabicData] = useState<VerseProps | string[]>([""]);
+  const [englishData, setEnglishData] = useState<VerseProps | string[]>([""]);
   const [isLoading, setIsLoading] = useState<boolean | null>(null);
-  const [error, setError] = useState<boolean | null>(null);
 
   const randomNumber = Math.floor(Math.random() * 6236) + 1;
-  const url = `${process.env.NEXT_PUBLIC_VERSE_URL}/${randomNumber}`;
+  const arabicDataUrl = `${process.env.NEXT_PUBLIC_VERSE_URL}/${randomNumber}`;
+  const englishDataUrl = `${process.env.NEXT_PUBLIC_VERSE_URL}/${randomNumber}/en.sahih`;
 
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get(url)
-      .then((response) => setData(response.data))
-      .catch((err) => setError(err))
+      .all([axios.get(arabicDataUrl), axios.get(englishDataUrl)])
+      .then(
+        axios.spread((arabicDataUrl, englishDataUrl) => {
+          setSurahData(arabicDataUrl.data.data.surah);
+          setArabicData(arabicDataUrl.data.data);
+          setEnglishData(englishDataUrl.data.data);
+        })
+      )
       .finally(() => setIsLoading(false));
   }, []);
 
   const refetch = () => {
     setIsLoading(true);
     axios
-      .get(url)
-      .then((response) => setData(response.data))
-      .catch((err) => setError(err))
+      .all([axios.get(arabicDataUrl), axios.get(englishDataUrl)])
+      .then(
+        axios.spread((arabicDataUrl, englishDataUrl) => {
+          setArabicData(arabicDataUrl.data.data);
+          setEnglishData(englishDataUrl.data.data);
+        })
+      )
       .finally(() => setIsLoading(false));
   };
 
-  return { data, isLoading, error, refetch };
+  return { isLoading, arabicData, englishData, surahData, refetch };
 };
 
 export default useFetch;

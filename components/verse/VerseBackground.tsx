@@ -5,20 +5,10 @@ import Copy from "../../public/icons/copy.svg";
 import Next from "../../public/icons/next.svg";
 import useFetch from "../../hooks/useFetch";
 
-/**
- * make the `useFetch`
- * when the btn is clicked
- * it should refetch the data
- * and make the `verse.tsx` reusable to use
- * it in here or find a way to use it here
- * properly.
- *
- */
-
 const VerseBackground: React.FunctionComponent = () => {
   const downloadRef = useRef<HTMLDivElement>(null);
   const [showColors, setShowColors] = useState<boolean>(false);
-  const { refetch, data: verse, isLoading } = useFetch();
+  const { refetch, isLoading, arabicData, englishData, surahData } = useFetch();
   const width = 20;
   // use window.innerHeight and innerWidth to resize the window
   // with useRef and reference it to the "gradient bg" to resize it.
@@ -43,32 +33,33 @@ const VerseBackground: React.FunctionComponent = () => {
   return (
     <>
       {/* TODO: fix the width and height  */}
-      <main className="mt-20">
+      <main ref={downloadRef}>
         <article
-          className={`gradient-bg content-shadow relative mx-auto max-h-[443px] max-w-[700px] rounded-md p-10`}
-          ref={downloadRef}
+          className={`gradient-bg content-shadow relative mx-auto my-10 max-h-[443px] max-w-[700px] rounded-md p-10`}
         >
           {/* <button className='resizeCircle cursor-w-resize top-1/2 right-[-5px]'></button>
           <button className='resizeCircle cursor-s-resize right-1/2 bottom-[-5px]'></button> */}
 
           {/* Verses are printed from here */}
-          <main className="flex min-h-[250px] min-w-[200px] flex-col justify-between rounded-md bg-white/90 py-8 px-8 text-center text-sm text-gray-500  drop-shadow-2xl">
-            {isLoading && <p>Loading, please wait...</p>}
-            <div>
-              <p>
-                <span className="text-2xl">{verse?.data.surah.name}</span> —{" "}
-                {verse?.data.surah.englishName}
-              </p>
-              <p className="mt-2">{verse?.data.surah.englishNameTranslation}</p>
-            </div>
-            <article className="mt-8 mb-10 text-right  text-2xl leading-loose text-black">
-              {verse?.data.text}
-            </article>
-            <p className="text-xl">
-              {verse?.data.surah.number}:{verse?.data.numberInSurah}
-            </p>
-            <p>Revelation Type: {verse?.data.surah.revelationType}</p>
-            <button onClick={refetch}>Change</button>
+          <main className="flex min-h-max min-w-[200px] flex-col justify-between rounded-md bg-white/60 py-4 px-8 text-center text-sm text-gray-500 drop-shadow-2xl">
+            {isLoading ? (
+              <p>Loading, please wait...</p>
+            ) : (
+              <>
+                <div className="flex items-center justify-between">
+                  <p className="text-lg">{surahData.englishNameTranslation}</p>
+                  <p className="text-2xl">{surahData.name}</p>
+                </div>
+                <hr />
+                <article className="my-6 leading-loose text-black">
+                  <p className="text-right text-2xl">{arabicData.text}</p>
+                  <p className="text-left">{englishData.text}</p>
+                </article>
+                <p className="text-xl">
+                  {surahData.number}:{arabicData.numberInSurah}
+                </p>
+              </>
+            )}
           </main>
         </article>
       </main>

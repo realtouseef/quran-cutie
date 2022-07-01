@@ -1,8 +1,10 @@
 export interface VerseProps {
   data: {
-    text: string;
-    numberInSurah: number;
-    surah: SurahProp;
+    data: {
+      text: string;
+      numberInSurah: number;
+      surah: SurahProp;
+    };
   };
 }
 
@@ -11,5 +13,4 @@ interface SurahProp {
   name: string;
   englishName: string;
   englishNameTranslation: string;
-  revelationType: string;
 }
